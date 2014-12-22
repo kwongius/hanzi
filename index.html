@@ -2,22 +2,40 @@
 layout: default
 ---
 
-<div class="home">
+<div class="home" id="rth-page">
 
-  <h1 class="page-heading">Posts</h1>
-
-  <ul class="post-list">
-    {% for post in site.posts %}
-      <li>
-        <span class="post-meta">{{ post.date | date: "%b %-d, %Y" }}</span>
-
-        <h2>
-          <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
-        </h2>
-      </li>
-    {% endfor %}
-  </ul>
-
-  <p class="rss-subscribe">subscribe <a href="{{ "/feed.xml" | prepend: site.baseurl }}">via RSS</a></p>
-
+    <input autocomplete="off" autofocus="autofocus" class="search" placeholder="Search" type="search">
+    <ul class="list">
+        {% for rth in site.data.rth %}
+        <li class="hanzi-tile">
+            <span class="hanzi-index">{{rth.index}}</span>
+            <span class="hanzi" lang="zh-Hant" xml:lang="zh-Hant">{{ rth.hanzi }}</span>
+            <br>
+            <span class="hanzi-keyword">
+                {{ rth.keyword }}
+                {% if rth.partofspeech %}
+                <sup>({{rth.partofspeech}})</sup>
+                {% endif %}
+            </span>
+            <br>
+            <span class="hanzi-url">
+                <a href="http://www.mdbg.net/chindict/chindict.php?page=chardict&cdcanoce=0&cdqchi=c:{{rth.hanzi}}">MDBG</a>
+                |
+                <a href="http://www.archchinese.com/chinese_english_dictionary.html?find={{rth.hanzi}}">Arch</a>
+                |
+                <a href="http://stroke-order.learningweb.moe.edu.tw/characterQueryResult.do?word={{rth.hanzi}}">MOE</a>
+            </span>
+        </li>
+        {% endfor %}
+    </ul>
 </div>
+
+
+<script text="text/javascript">
+var options = {
+    valueNames: [ 'hanzi', 'hanzi-index', 'hanzi-keyword' ],
+    page: {{ site.data.rth.size }},
+};
+
+var hanziList = new List('rth-page', options);
+</script>
