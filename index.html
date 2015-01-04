@@ -8,23 +8,24 @@ layout: default
     <ul class="list">
         {% for rth in site.data.rth %}
         <li class="hanzi-tile">
-            <span class="hanzi-index">{{rth.index}}</span>
-            <span class="hanzi" lang="zh-Hant" xml:lang="zh-Hant">{{ rth.hanzi }}</span>
-            <br>
-            <span class="hanzi-keyword">
+            <div class="hanzi-index">{{rth.index}}</div>
+            <div class="hanzi" lang="zh-Hant" xml:lang="zh-Hant">{{ rth.hanzi }}</div>
+            <div class="hanzi-keyword">
                 {{ rth.keyword }}
-                {% if rth.partofspeech %}
+                {% if rth.partofspeech.length > 0 %}
                 <sup>({{rth.partofspeech}})</sup>
                 {% endif %}
-            </span>
-            <br>
-            <span class="hanzi-url">
-                <a href="http://www.mdbg.net/chindict/chindict.php?page=chardict&cdcanoce=0&cdqchi=c:{{rth.hanzi}}">MDBG</a>
+            </div>
+            <div class="hanzi-bopomofo">
+              {{rth.bopomofo}}
+            </div>
+            <div class="hanzi-url">
+                <a href="http://www.mdbg.net/chindict/chindict.php?page=chardict&cdcanoce=0&cdqchi=c:{{rth.hanzi}}" target="_blank">MDBG</a>
                 |
-                <a href="http://www.archchinese.com/chinese_english_dictionary.html?find={{rth.hanzi}}">Arch</a>
+                <a href="http://www.archchinese.com/chinese_english_dictionary.html?find={{rth.hanzi}}" target="_blank">Arch</a>
                 |
-                <a href="http://stroke-order.learningweb.moe.edu.tw/characterQueryResult.do?word={{rth.hanzi}}">MOE</a>
-            </span>
+                <a href="http://stroke-order.learningweb.moe.edu.tw/characterQueryResult.do?word={{rth.hanzi}}" target="_blank">MOE</a>
+            </div>
         </li>
         {% endfor %}
     </ul>
