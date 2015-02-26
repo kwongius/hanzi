@@ -5,3 +5,6 @@ url: "http://wongius.com" # the base hostname & protocol for your site
 
 # Build settings
 markdown: kramdown
+
+exclude: 
+  - rth_parser
