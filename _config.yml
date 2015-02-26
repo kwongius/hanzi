@@ -1,10 +1,10 @@
 # Site settings
 title: Remembering the 漢字
 baseurl: "" # the subpath of your site, e.g. /blog/
-url: "http://wongius.com" # the base hostname & protocol for your site
+url: "http://hanzi.wongius.com" # the base hostname & protocol for your site
 
 # Build settings
 markdown: kramdown
 
-exclude: 
+exclude:
   - rth_parser
